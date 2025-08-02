@@ -45,6 +45,21 @@ const authenticateToken = (req, res, next) => {
 
 // Routes
 
+// Root route for health check
+app.get('/', (req, res) => {
+  res.json({
+    message: 'AI Vocational Training Backend API',
+    status: 'Running',
+    endpoints: [
+      'POST /api/register',
+      'POST /api/login', 
+      'GET /api/profile',
+      'GET /api/progress',
+      'GET /api/modules/:moduleId'
+    ]
+  });
+});
+
 // Register user
 app.post('/api/register', [
   body('email').isEmail().normalizeEmail(),
