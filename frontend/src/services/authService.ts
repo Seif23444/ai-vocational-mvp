@@ -5,6 +5,8 @@ const API_BASE_URL = process.env.REACT_APP_API_URL ||
     ? window.location.origin.replace('-3000', '-5000')
     : 'http://localhost:5000');
 
+console.log('🔧 API_BASE_URL configured as:', API_BASE_URL);
+
 interface LoginResponse {
   message: string;
   token: string;
