@@ -54,13 +54,24 @@ class AuthService {
 
   async register(name: string, email: string, password: string): Promise<RegisterResponse> {
     try {
+      console.log('🚀 Attempting registration to:', `${API_BASE_URL}/api/register`);
+      console.log('📝 Data being sent:', { name, email, password: '***' });
+      
       const response = await axios.post(`${API_BASE_URL}/api/register`, {
         name,
         email,
         password
       });
+      
+      console.log('✅ Registration successful:', response.data);
       return response.data;
     } catch (error: any) {
+      console.error('❌ Registration error details:');
+      console.error('- Status:', error.response?.status);
+      console.error('- Data:', error.response?.data);
+      console.error('- Headers:', error.response?.headers);
+      console.error('- Full error:', error);
+      
       throw new Error(error.response?.data?.message || 'Registration failed');
     }
   }
