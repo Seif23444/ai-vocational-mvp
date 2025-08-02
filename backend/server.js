@@ -10,7 +10,12 @@ const JWT_SECRET = process.env.JWT_SECRET || 'your-secret-key-change-in-producti
 
 // Middleware
 app.use(cors({
-  origin: 'http://localhost:3000',
+  origin: [
+    'http://localhost:3000',
+    'https://silver-yodel-5g5p9qgqpxjrfp7x6-3000.app.github.dev',
+    'https://silver-yodel-5g5p9qgqpxjrfp7x6-5000.app.github.dev',
+    /^https:\/\/.*\.app\.github\.dev$/
+  ],
   methods: ['GET', 'POST', 'PUT', 'DELETE'],
   credentials: true
 }));
