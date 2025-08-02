@@ -1,6 +1,9 @@
 import axios from 'axios';
 
-const API_BASE_URL = process.env.REACT_APP_API_URL || 'http://localhost:5000';
+const API_BASE_URL = process.env.REACT_APP_API_URL || 
+  (window.location.hostname.includes('app.github.dev') 
+    ? window.location.origin.replace('-3000', '-5000')
+    : 'http://localhost:5000');
 
 interface LoginResponse {
   message: string;
